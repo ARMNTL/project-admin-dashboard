@@ -3,3 +3,35 @@
     margin: 0;
     padding: 0;
 }
+
+/* 5 */
+.dashboard-grid-container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 200px 1fr;
+    grid-template-columns: minmax(200px, 1fr) minmax(400px, 8fr);
+    grid-template-areas:
+        "sidebar header"
+        "sidebar main-content";
+}
+
+/* 6 */
+.sidebar-container {
+    grid-area: sidebar;
+    background-color: #1992d4;
+}
+
+/* 7 */
+.header-container {
+    grid-area: header;
+    background-color: white;
+    box-shadow: 0px 5px 5px lightgrey;
+    /* 9 */
+    z-index: 1;
+}
+
+/* 8 */
+.main-content-container {
+    grid-area: main-content;
+    background-color: #e2e8f0;
+}
