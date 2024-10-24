@@ -323,6 +323,15 @@ body {
 </div>
 ```
 
+```css
+.header-greeting .header-avatar {
+    width: 64px;
+    height: 64px;
+    background-color: lightgrey;
+    border-radius: 50%;
+}
+```
+
 30. Buttons elements.
 
 ```html
@@ -331,4 +340,32 @@ body {
     <button>Upload</button>
     <button>Share</button>
 </div>
+```
+
+31. Styling header search bar.
+
+```css
+.header-search-bar {
+    /* border: 1px solid; */
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 22px 1fr;
+}
+
+.header-search-bar input[type="search"] {
+    font-size: 1rem;
+    padding: 8px 10px;
+    margin-left: 1rem;
+    background-color: #e2e8f0;
+    border: none;
+    border-radius: 12px;
+}
+
+.header-search-bar input[type="search"]:focus {
+    outline: 1px solid lightgrey;
+}
+
+.header-search-bar svg {
+    align-self: center;
+}
 ```
