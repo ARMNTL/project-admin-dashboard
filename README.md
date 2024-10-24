@@ -1,6 +1,12 @@
 # Project Odin - Admin Dashboard
 
+## Credits
+
+-   The Odin emoji is from AI Emojis @sujan_shrestha1 [link here](https://emojis.sh/emoji/thor-hammer-EPY4fHmrLS)
+
 ## Steps I made
+
+### Dashboard layout
 
 1. Create the main dashboard grid container.
 
@@ -80,6 +86,8 @@
     z-index: 1;
 }
 ```
+
+### Sidebar
 
 10. Let's start nesting elements to the sidebar section. I can see 3 sections: header, main, misc.
 
@@ -163,7 +171,7 @@ body {
     font-size: 1.5rem;
     /* 15, 17 */
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 2fr;
     align-items: center;
 }
 ```
@@ -233,3 +241,94 @@ body {
 ```
 
 25. Styling sidebar links.
+
+```css
+.sidebar-container a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar-container a:hover {
+    color: lightblue;
+}
+```
+
+### Header
+
+26. Setting the grid for the header. It looks that there are 4 sections: search bar, profile, greeting and buttons.
+
+```css
+.header-container {
+    ...
+    /* 26 */
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: minmax(400px, 1fr) minmax(300px, 1fr);
+}
+```
+
+27. Search bar elements.
+
+```html
+<div class="search-bar">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" viewBox="0 0 24 24">
+        <path
+            d="M9.5,4C13.09,4 16,6.91 16,10.5C16,12.12 15.41,13.6 14.43,14.73L20.08,20.38L19.37,21.09L13.72,15.44C12.59,16.41 11.11,17 9.5,17C5.91,17 3,14.09 3,10.5C3,6.91 5.91,4 9.5,4M9.5,5C6.46,5 4,7.46 4,10.5C4,13.54 6.46,16 9.5,16C12.54,16 15,13.54 15,10.5C15,7.46 12.54,5 9.5,5Z"
+        />
+    </svg>
+    <input class="search-bar-input" type="text" />
+</div>
+```
+
+28. Profile elements. Style the avatar to fit.
+
+```html
+<div class="header-profile">
+    <button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" viewBox="0 0 24 24">
+            <path
+                d="M11.5,6C15.64,6 19,9.36 19,13.5C19,17.64 15.64,21 11.5,21C7.36,21 4,17.64 4,13.5C4,9.36 7.36,6 11.5,6M11.5,7C7.91,7 5,9.91 5,13.5C5,17.09 7.91,20 11.5,20C15.09,20 18,17.09 18,13.5C18,9.91 15.09,7 11.5,7M11,9H12V13.36L15.05,14.78L14.63,15.69L11,14V9M15.25,5.25L15.89,4.5L19.72,7.7L19.08,8.46L15.25,5.25M7.75,5.25L3.92,8.46L3.28,7.7L7.11,4.5L7.75,5.25Z"
+            />
+        </svg>
+    </button>
+    <img
+        class="header-avatar"
+        src="./r0ox7x62v4cnpiukgpmwe89w3jeo.png"
+        alt="Odin emoji"
+    />
+    <span>Thor Odinson</span>
+</div>
+```
+
+```css
+.header-profile .header-avatar {
+    width: 48px;
+    height: 48px;
+    background-color: lightgrey;
+    border-radius: 50%;
+}
+```
+
+29. Greeting elements.
+
+```html
+<div class="header-greeting">
+    <img
+        class="header-avatar"
+        src="./r0ox7x62v4cnpiukgpmwe89w3jeo.png"
+        alt="Odin emoji"
+    />
+    <p>Hi there,</p>
+    <p>Thor Odinson (@TOP)</p>
+</div>
+```
+
+30. Buttons elements.
+
+```html
+<div class="header-buttons">
+    <button>New</button>
+    <button>Upload</button>
+    <button>Share</button>
+</div>
+```
