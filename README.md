@@ -441,3 +441,318 @@ body {
     cursor: pointer;
 }
 ```
+
+### Main Content
+
+35. There are 3 sections: your projects, announcements and trending. Grid-wise, 2 x 2 looks good. Setting the grid first.
+
+```html
+<div class="main-content-container">
+    <div class="projects-container"></div>
+    <div class="announcements-container"></div>
+    <div class="trending-container"></div>
+</div>
+```
+
+```css
+.main-content-container {
+    ...
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr minmax(256px, auto);
+    grid-template-columns: 1fr minmax(256px, auto);
+    padding: 2rem 1rem;
+    gap: 1rem;
+    grid-template-areas:
+        "cards announcements"
+        "cards trending";
+}
+```
+
+36. The projects section looks the hardest. It has the title and the cards sections. Setting the grid.
+
+```html
+<div class="projects-container">
+    <h2 class="projects-title">Your Projects</h2>
+    <div class="projects-cards"></div>
+</div>
+```
+
+```css
+.projects-container {
+    grid-area: cards;
+    display: grid;
+    grid-template-rows: minmax(2rem, auto) 1fr;
+}
+```
+
+37. Styling cards title.
+
+```css
+.projects-title {
+    font-size: 1.1rem;
+}
+```
+
+38. Making the cards.
+
+```html
+<a class="card" href="#">
+    <div class="content">
+        <h4>Super Cool Project</h4>
+        <p>
+            Lorem ipsum odor amet, consectetuer adipiscing elit. Aaliquet aenean
+            eros eleifend pharetra felis posuere vivamus.
+        </p>
+    </div>
+
+    <div class="card-buttons">
+        <button>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    d="M12.86,10.44L11,6.06L9.14,10.45L4.39,10.86L8,14L6.92,18.63L11,16.17L15.09,18.63L14,14L17.61,10.86L12.86,10.44M16.59,20.7L11,17.34L5.42,20.7L6.88,14.35L1.96,10.07L8.45,9.5L11,3.5L13.55,9.5L20.04,10.07L15.12,14.34L16.59,20.7Z"
+                />
+            </svg>
+        </button>
+
+        <button>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    d="M11.5,18C15.5,18 18.96,15.78 20.74,12.5C18.96,9.22 15.5,7 11.5,7C7.5,7 4.04,9.22 2.26,12.5C4.04,15.78 7.5,18 11.5,18M11.5,6C16.06,6 20,8.65 21.86,12.5C20,16.35 16.06,19 11.5,19C6.94,19 3,16.35 1.14,12.5C3,8.65 6.94,6 11.5,6M11.5,8C14,8 16,10 16,12.5C16,15 14,17 11.5,17C9,17 7,15 7,12.5C7,10 9,8 11.5,8M11.5,9C9.57,9 8,10.57 8,12.5C8,14.43 9.57,16 11.5,16C13.43,16 15,14.43 15,12.5C15,10.57 13.43,9 11.5,9Z"
+                />
+            </svg>
+        </button>
+
+        <button>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    d="M21.4,12.5L12,18.38L11,19V13.38L3,18.38L2,19V6L11,11.62V6L21.4,12.5M19.5,12.5L12,7.8V17.2L19.5,12.5M10.5,12.5L3,7.8V17.2L10.5,12.5Z"
+                />
+            </svg>
+        </button></div
+></a>
+```
+
+```css
+.projects-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+    gap: 1rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: black;
+    text-decoration: none;
+    border: 1px solid lightgrey;
+    border-left: 10px solid #f0b429;
+    border-radius: 8px;
+    box-shadow: 0 0 8px grey;
+    padding: 1rem;
+}
+
+.card p {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.card-buttons {
+    display: flex;
+    justify-content: end;
+}
+
+.card button {
+    background: none;
+    border: none;
+    margin-left: 1rem;
+    text-align: center;
+}
+
+.card button:hover {
+    opacity: 50%;
+    cursor: pointer;
+}
+```
+
+39. Nesting announcements elements.
+
+```html
+<div class="announcements-container">
+    <h2 class="announcements-title">Announcements</h2>
+    <div class="announcements">
+        <div class="announcement">
+            <a href="#">
+                <h4>Site Maintenance</h4>
+                <p>
+                    Lorem ipsum dolor sit amet. Eum reiciendis accusamus ad
+                    consequuntur odio ut iste officiis eos fuga magni. Non
+                    voluptatibus atque est iste adipisci qui illum corrupti!
+                </p>
+            </a>
+        </div>
+
+        <div class="announcement">
+            <a href="#">
+                <h4>Site Maintenance</h4>
+                <p>
+                    Lorem ipsum dolor sit amet. Eum reiciendis accusamus ad
+                    consequuntur odio ut iste officiis eos fuga magni. Non
+                    voluptatibus atque est iste adipisci qui illum corrupti!
+                </p>
+            </a>
+        </div>
+
+        <div class="announcement">
+            <a href="#">
+                <h4>Site Maintenance</h4>
+                <p>
+                    Lorem ipsum dolor sit amet. Eum reiciendis accusamus ad
+                    consequuntur odio ut iste officiis eos fuga magni. Non
+                    voluptatibus atque est iste adipisci qui illum corrupti!
+                </p>
+            </a>
+        </div>
+    </div>
+</div>
+```
+
+40. Styling announcements section.
+
+```css
+.announcements-container {
+    grid-area: announcements;
+    display: grid;
+    grid-template-rows: minmax(2rem, auto) 1fr;
+}
+
+.announcements-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.announcements {
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    box-shadow: 0 0 8px grey;
+    padding: 1rem;
+}
+
+.announcement a {
+    color: black;
+    text-decoration: none;
+}
+
+.announcement + .announcement {
+    padding: 1rem 0;
+    border-top: 1px solid lightgrey;
+}
+
+.announcements > .announcement:first-child {
+    padding-bottom: 1rem;
+}
+
+.announcement h4 {
+    font-size: 0.8rem;
+}
+
+.announcement p {
+    font-size: 0.7rem;
+}
+
+.announcement p:hover {
+    color: grey;
+}
+```
+
+41. Nesting trending elements.
+
+```html
+<div class="trending-container">
+    <h2 class="trending-title">Trending</h2>
+    <div class="trendings">
+        <div class="trending">
+            <a href="#">
+                <div class="trending-avatar">O</div>
+                <div class="trending-group">
+                    <div class="trending-domain">@TOP</div>
+                    <div class="trending-project">Super Cool Project</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+```
+
+42. Styling trending.
+
+```css
+.trending-container {
+    grid-area: trending;
+    display: grid;
+    grid-template-rows: minmax(2rem, auto) 1fr;
+}
+
+.trending-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.trendings {
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    box-shadow: 0 0 8px grey;
+    padding: 1rem;
+}
+
+.trending {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.trending a {
+    text-decoration: none;
+    color: black;
+}
+
+.trending a:visited {
+    color: #1992d4;
+}
+
+.trending-avatar {
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    background-color: #1992d4;
+    border-radius: 50%;
+    font-size: 2rem;
+    width: 48px;
+    height: 48px;
+}
+
+.trending-domain {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.trending-project {
+    font-size: 0.8rem;
+}
+```
